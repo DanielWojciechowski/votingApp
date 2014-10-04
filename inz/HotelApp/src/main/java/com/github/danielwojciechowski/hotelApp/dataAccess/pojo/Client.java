@@ -1,4 +1,4 @@
-package com.github.danielwojciechowski.dataAccess.pojo;
+package com.github.danielwojciechowski.hotelApp.dataAccess.pojo;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +12,7 @@ public class Client {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String id;	
 	
-	private String firtName;
+	private String firstName;
 	private String lastName;
 	private String email;
 	private String pesel;

@@ -1,4 +1,4 @@
-package com.github.danielwojciechowski.appServices;
+package com.github.danielwojciechowski.hotelApp.appServices;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
