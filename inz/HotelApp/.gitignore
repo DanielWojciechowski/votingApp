@@ -1,3 +1,6 @@
 /target/
 /out.txt
-/HotelApp.iml
+*.iml
+*.classpath
+*.project
+

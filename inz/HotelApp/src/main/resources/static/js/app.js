@@ -1,48 +1,23 @@
-var app = angular.module("hotelApp", ["ui.bootstrap"]);
+var app = angular.module('hotelApp', ['ngRoute', 'ngResource', 'ui.bootstrap']);
+app.config(function ($routeProvider) {
 
-app.controller("appCtrl", function ($scope) {
-	$scope.hello="Hello World!";
-});
+    $routeProvider.when("/home", {
+        controller: "homeController",
+        templateUrl: "./views/home.html"
+    });
+    $routeProvider.when("/newRegistration", {
+        controller: "newRegistrationController",
+        templateUrl: "./views/registration/newRegistration.html"
 
-app.controller('AlertDemoCtrl', function ($scope) {
-	  $scope.alerts = [
-	  ];
+    });
+    $routeProvider.when("/findRegistration", {
+        controller: "findRegistrationController",
+        templateUrl: "./views/registration/findRegistration.html"
+    });
 
-	  $scope.addAlert = function() {
-	    $scope.alerts.push({msg: 'Dodałeś alert nr ' + $scope.alertNo});
-	    $scope.alertNo = $scope.alertNo+1;
-	  };
-	  
-	  $scope.alertNo = 1;
+    $routeProvider.when("/", {
+        redirectTo: "/home"
+    });
+    $routeProvider.otherwise({ redirectTo: "/else" });
 
-	  $scope.closeAlert = function(index) {
-	    $scope.alerts.splice(index, 1);
-	  };
-	});
-
-app.controller('CollapseDemoCtrl', function ($scope) {
-	  $scope.isCollapsed = true;
-	});
-
-app.controller('dbTest', function ($scope, $http){
-	var urlBase="";
-	$scope.roomNumb;
-	$scope.findRoom = function() {
-		if($scope.roomNumb != null && $scope.roomNumb != ""){
-	        $http.get(urlBase + '/rooms/search/findByRoomNoStartingWith?roomNo=' + $scope.roomNumb).
-	            success(function (data) {
-	                if (data._embedded != undefined) {
-	                    $scope.rooms = data._embedded.rooms;
-	                } else {
-	                    $scope.rooms = [];
-	                }
-	            });
-		}
-		else{
-			$scope.rooms = [];
-		}
-    }
-	$scope.findRoom;
-	
-	
 });
