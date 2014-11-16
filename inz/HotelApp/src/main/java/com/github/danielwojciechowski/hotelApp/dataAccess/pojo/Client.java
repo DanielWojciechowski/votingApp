@@ -1,9 +1,6 @@
 package com.github.danielwojciechowski.hotelApp.dataAccess.pojo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.Data;
 
@@ -17,10 +14,12 @@ public class Client {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String pesel;
+	private String idNumber;
 	private String phoneNumber;
 	private String sex;
-	
-	
+	private String preferences;
 
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="countryId")
+	private DictCountry country;
 }

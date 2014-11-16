@@ -11,7 +11,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 
 @Configuration
 @ComponentScan("com.github.danielwojciechowski.hotelApp")
-@EnableJpaRepositories("com.github.danielwojciechowski.hotelApp.dataAccess.RepositoryObjects")
+@EnableJpaRepositories("com.github.danielwojciechowski.hotelApp.dataAccess.repositoryObjects")
 @Import(RepositoryRestMvcConfiguration.class)
 @EnableAutoConfiguration
 @EntityScan("com.github.danielwojciechowski.hotelApp.dataAccess.pojo")

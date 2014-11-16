@@ -20,11 +20,26 @@
                 <div class="navbar-collapse collapse navbar-inverse-collapse">
                     <ul class="nav navbar-nav">
                         <li data-ng-class="{'active':isActive('/home')}"><a href="#/home">Start</a></li>
-                        <li class="dropdown open" data-ng-class="{'active':isActive('/newRegistration') || isActive('/findRegistration')}">
+                        <li class="dropdown open" data-ng-class="{'active':isActive('/newReservation') || isActive('/findReservation')}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rezerwacje<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#/newRegistration">Nowa rezerwacja</a></li>
-                                <li><a href="#/findRegistration">Znajdź rezerwację</a></li>
+                                <li><a href="#/newReservation">Nowa rezerwacja</a></li>
+                                <li><a href="#/findReservation">Znajdź rezerwację</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown open" data-ng-class="{'active':isActive('/newRegistration') || isActive('/endRegistration')}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meldunki<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#/newRegistration">Zamelduj</a></li>
+                                <li><a href="#/endRegistration">Wymelduj</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown open" data-ng-class="{'active':isActive('/hotelOccupancy') || isActive('/roomOccupancy') || isActive('/findAvailableRoom')}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Grafik<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#/hotelOccupancy">Obłożenie hotelu</a></li>
+                                <li><a href="#/roomOccupancy">Obłożenie pokoju</a></li>
+                                <li><a href="#/findAvailableRoom">Znajdź wolny pokój</a></li>
                             </ul>
                         </li>
                     </ul>

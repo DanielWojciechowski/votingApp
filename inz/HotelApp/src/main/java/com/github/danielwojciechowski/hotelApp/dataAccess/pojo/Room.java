@@ -22,7 +22,7 @@ public class Room {
 	@NotNull
 	private String roomNo;
 	//@NotNull
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="roomTypeId")
 	private DictRoomType roomType;
 }
