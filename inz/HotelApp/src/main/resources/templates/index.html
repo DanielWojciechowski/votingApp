@@ -4,9 +4,8 @@
     <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<title>***Hotel Wzorcowy***</title>
-    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/bootstrap.css" rel="stylesheet" />
     <link href="./css/specificStyle.css" rel="stylesheet" />
-	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" /-->
     <link rel="shortcut icon" href="./images/icon.ico" />
 
 </head>
@@ -15,69 +14,96 @@
         <header class="container" data-ng-controller="navigationController">
             <div id="menu" class="navbar navbar-inverse">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#/home">***Hotel Wzorcowy***</a>
+                    <a class="navbar-brand" ui-sref="home">***Hotel Wzorcowy***</a>
                 </div>
                 <div class="navbar-collapse collapse navbar-inverse-collapse">
                     <ul class="nav navbar-nav">
-                        <li data-ng-class="{'active':isActive('/home')}"><a href="#/home">Start</a></li>
-                        <li class="dropdown open" data-ng-class="{'active':isActive('/newReservation') || isActive('/findReservation')}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rezerwacje<b class="caret"></b></a>
+                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/newReservation') || isActive('/findReservation')}">
+                            <a href="#" class="dropdown-toggle" dropdown-toggle>Rezerwacje<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#/newReservation">Nowa rezerwacja</a></li>
-                                <li><a href="#/findReservation">Znajdź rezerwację</a></li>
+                                <li><a ui-sref="newReservation.selectClient">Nowa rezerwacja</a></li>
+                                <li><a ui-sref="findReservation">Znajdź rezerwację</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown open" data-ng-class="{'active':isActive('/newRegistration') || isActive('/endRegistration')}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meldunki<b class="caret"></b></a>
+                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/newRegistration') || isActive('/endRegistration')}">
+                            <a href="#" class="dropdown-toggle" dropdown-toggle>Meldunki<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#/newRegistration">Zamelduj</a></li>
-                                <li><a href="#/endRegistration">Wymelduj</a></li>
+                                <li><a ui-sref="newRegistration">Zamelduj</a></li>
+                                <li><a ui-sref="endRegistration">Wymelduj</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown open" data-ng-class="{'active':isActive('/hotelOccupancy') || isActive('/roomOccupancy') || isActive('/findAvailableRoom')}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Grafik<b class="caret"></b></a>
+                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/hotelOccupancy') || isActive('/roomOccupancy') || isActive('/findAvailableRoom')}">
+                            <a href="#" class="dropdown-toggle" dropdown-toggle>Grafik<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#/hotelOccupancy">Obłożenie hotelu</a></li>
                                 <li><a href="#/roomOccupancy">Obłożenie pokoju</a></li>
                                 <li><a href="#/findAvailableRoom">Znajdź wolny pokój</a></li>
                             </ul>
                         </li>
+                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/hotelOccupancy') || isActive('/roomOccupancy') || isActive('/findAvailableRoom')}">
+                            <a href="#" class="dropdown-toggle" dropdown-toggle>Zlecenia<b class="caret"></b></a>
+                        </li>
+                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/hotelOccupancy') || isActive('/roomOccupancy') || isActive('/findAvailableRoom')}">
+                            <a href="#" class="dropdown-toggle" dropdown-toggle>Zasoby<b class="caret"></b></a>
+                        </li>
+                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/hotelOccupancy') || isActive('/roomOccupancy') || isActive('/findAvailableRoom')}">
+                            <a href="#" class="dropdown-toggle" dropdown-toggle>Produkty<b class="caret"></b></a>
+                        </li>
+                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/hotelOccupancy') || isActive('/roomOccupancy') || isActive('/findAvailableRoom')}">
+                            <a href="#" class="dropdown-toggle" dropdown-toggle>Administracja<b class="caret"></b></a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
                     </ul>
                 </div>
             </div>
         </header>
         <section id="body" class="container">
-            <div data-ng-view=""></div>
+            <div class="jumbotron" ui-view></div>
         </section>
         <div class="push"></div>
     </div>
-    <div class="footer" data-ng-controller="appVersionController">
-        <div class="well well-sm container">
-            <h6>
-                Wersja: {{version}}<br/>
-                <div class="text-center">
-                    Aplikacja utworzona przez Daniela Wojciechowskiego w ramach pracy inżynierskiej pod kierownictwem dr inż. Ireny Skórskiej.<br />
-                    Wojskowa Akademia Techniczna, 2014 r.
-                </div>
-            </h6>
+    <div class="container">
+        <div class="footer" data-ng-controller="appVersionController">
+            <div class="well well-sm">
+                <h6>
+                    Wersja: {{version}}<br/>
+                    <div class="text-center">
+                        Aplikacja utworzona przez Daniela Wojciechowskiego i Annę Cierniewską w ramach projektu z przedmiotu "Aplikacje Internetowe".<br />
+                        Wojskowa Akademia Techniczna, 2014-2015 r.
+                    </div>
+                </h6>
+            </div>
         </div>
     </div>
 
     <!-- 3rd party libraries -->
-    <script src="https://code.angularjs.org/1.3.1/angular.min.js"> </script>
-    <script src="https://code.angularjs.org/1.3.1/angular-animate.min.js"> </script>
-    <script src="https://code.angularjs.org/1.3.1/angular-route.min.js"> </script>
-    <script src="https://code.angularjs.org/1.3.1/angular-resource.min.js"></script>
-    <script type="text/javascript" src="./js/ui-bootstrap-0.11.2.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.5/angular.js"> </script>
+    <script src="https://code.angularjs.org/1.3.5/angular-animate.js"> </script>
+    <script src="https://code.angularjs.org/1.3.5/angular-route.js"> </script>
+    <script src="https://code.angularjs.org/1.3.5/angular-resource.js"></script>
+    <script type="text/javascript" src="./js/ui-bootstrap-0.12.0.js"></script>
+    <script type="text/javascript" src="./js/angular-ui-router.js"></script>
+    <script type="text/javascript" src="./js/angular-spring-data-rest.js"></script>
     <!-- Load app main script -->
 	<script type="text/javascript" src="./js/app.js"></script>
+    <!-- Load app locale_pl script -->
+    <script type="text/javascript" src="./js/locale_pl.js"></script>
     <!-- Load services -->
+    <script type="text/javascript" src="./js/services/newReservationService.js"></script>
+    <script type="text/javascript" src="./js/services/findReservationService.js"></script>
+    <script type="text/javascript" src="./js/services/restResourceService.js"></script>
     <!-- Load controllers -->
     <script type="text/javascript" src="./js/controllers/homeController.js"></script>
     <script type="text/javascript" src="./js/controllers/navigationController.js"></script>
     <script type="text/javascript" src="./js/controllers/appVersionController.js"></script>
+    <script type="text/javascript" src="./js/controllers/reservation/newReservationController.js"></script>
+    <script type="text/javascript" src="./js/controllers/reservation/findReservationController.js"></script>
+    <script type="text/javascript" src="./js/controllers/reservation/reservationDetailsController.js"></script>
     <script type="text/javascript" src="./js/controllers/registration/newRegistrationController.js"></script>
     <script type="text/javascript" src="./js/controllers/registration/findRegistrationController.js"></script>
+    <script type="text/javascript" src="./js/controllers/clients/newClientController.js"></script>
     <!-- Load custom filters -->
     <!-- Load custom directives -->
 

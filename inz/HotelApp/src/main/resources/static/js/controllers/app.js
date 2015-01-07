@@ -25,9 +25,9 @@ app.controller('CollapseDemoCtrl', function ($scope) {
 	});
 
 app.controller('dbTest', function ($scope, $http){
-	var urlBase="";
-	$scope.roomNumb;
 	$scope.findRoom = function() {
+		var urlBase="";
+		$scope.roomNumb;
 		if($scope.roomNumb != null && $scope.roomNumb != ""){
 	        $http.get(urlBase + '/rooms/search/findByRoomNoStartingWith?roomNo=' + $scope.roomNumb).
 	            success(function (data) {

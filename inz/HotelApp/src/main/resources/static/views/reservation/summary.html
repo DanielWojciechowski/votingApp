@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-sm-offset-1 col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading text-center">
+                <h3 class="panel-title">Dokonano rezerwacji (numer {{reservationId}})</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-offset-1 col-md-5">
+                    <a ui-sref="home" class="btn btn-block btn-info">
+                        <span class="glyphicon glyphicon-ok-circle"></span> OK
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <a ui-sref="reservationDetails" class="btn btn-block btn-info" ng-disabled="!(!!reservationId)" ng-click="saveReservation(reservationId);">
+                        <span class="glyphicon glyphicon-circle-arrow-right"></span> Szczegóły
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

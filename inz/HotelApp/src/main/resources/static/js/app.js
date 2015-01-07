@@ -1,43 +1,68 @@
-var app = angular.module('hotelApp', ['ngRoute', 'ngResource', 'ui.bootstrap']);
-app.config(function ($routeProvider) {
+var app = angular.module('hotelApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'spring-data-rest']);
+app.config(function ($stateProvider, $urlRouterProvider) {
 
-    $routeProvider.when("/home", {
-        controller: "homeController",
-        templateUrl: "./views/home.html"
-    });
-    $routeProvider.when("/newReservation", {
-        controller: "newReservationController",
-        templateUrl: "./views/reservation/newReservation.html"
+    $stateProvider
+        .state('home', {
+            url: '/home',
+            templateUrl: './views/home.html'
+        })
+        .state('newReservation', {
+            url: '/newReservation',
+            templateUrl: './views/reservation/newReservation.html'
+        })
+        .state('newReservation.selectClient', {
+            url: '/selectClient',
+            templateUrl: './views/reservation/selectClient.html'
+        })
+        .state('newReservation.selectRoom', {
+            url: '/selectRoom',
+            templateUrl: './views/reservation/selectRoom.html'
+        })
+        .state('newReservation.specifyReservation', {
+            url: '/specifyReservation',
+            templateUrl: './views/reservation/specifyReservation.html'
+        })
+        .state('newReservation.summary', {
+            url: '/summary',
+            templateUrl: './views/reservation/summary.html'
+        })
+        .state('findReservation', {
+            url: '/findReservation',
+            templateUrl: './views/reservation/findReservation.html'
+        })
+        .state('reservationDetails', {
+            url: '/reservationDetails',
+            templateUrl: './views/reservation/reservationDetails.html'
+        })
+        .state('newRegistration', {
+            url: '/newRegistration',
+            templateUrl: './views/registration/newRegistration.html'
+        })
+        .state('endRegistration', {
+            url: '/endRegistration',
+            templateUrl: './views/registration/endRegistration.html'
+        })
+        .state('hotelOccupancy', {
+            url: '/hotelOccupancy',
+            templateUrl: './views/schedule/hotelOccupancy.html'
+        })
+        .state('roomOccupancy', {
+            url: '/roomOccupancy',
+            templateUrl: './views/schedule/roomOccupancy.html'
+        })
+        .state('findAvailableRoom', {
+            url: '/findAvailableRoom',
+            templateUrl: './views/schedule/findAvailableRoom.html'
+        })
+        .state('newClient', {
+            url: '/newClient',
+            templateUrl: './views/clients/newClient.html'
+        })
+        .state('home2', {
+            url: '/',
+            redirectTo: "/home"
+        });
 
-    });
-    $routeProvider.when("/findReservation", {
-        controller: "findReservationController",
-        templateUrl: "./views/reservation/findReservation.html"
-    });
-    $routeProvider.when("/newRegistration", {
-        controller: "newRegistrationController",
-        templateUrl: "./views/registration/newRegistration.html"
-
-    });
-    $routeProvider.when("/endRegistration", {
-        controller: "endRegistrationController",
-        templateUrl: "./views/registration/endRegistration.html"
-    });
-    $routeProvider.when("/hotelOccupancy", {
-        controller: "hotelOccupancyController",
-        templateUrl: "./views/schedule/hotelOccupancy.html"
-    });
-    $routeProvider.when("/roomOccupancy", {
-        controller: "roomOccupancyController",
-        templateUrl: "./views/schedule/roomOccupancy.html"
-    });
-    $routeProvider.when("/findAvailableRoom", {
-        controller: "findAvailableRoomController",
-        templateUrl: "./views/schedule/findAvailableRoom.html"
-    });
-    $routeProvider.when("/", {
-        redirectTo: "/home"
-    });
-    $routeProvider.otherwise({ redirectTo: "/else" });
+    $urlRouterProvider.otherwise('/else');
 
 });

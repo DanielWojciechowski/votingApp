@@ -1,3 +1,40 @@
-<div>
-    findReservation
+<div data-ng-controller='findReservationController'>
+    <div class="container">
+        <div class="col-sm-offset-2">
+            <div class="row">
+                <div class="col-md-5">
+                    <h4>Kryterium wyszukiwania:</h4>
+                    <select class="form-control" data-ng-model="selectedCriterion" ng-options="item for item in criteria">
+                        <option value="">-kryterium-</option>
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <h4>{{selectedCriterion == null || selectedCriterion == 'null' ? 'Wybierz kryterium!' : 'Wprowadź '+selectedCriterion +':'}}</h4>
+                    <input type="text" class="form-control" data-ng-model="inputText">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-offset-3 col-md-4">
+                    <a class="btn btn-block btn-info" ng-click="findReservation(selectedCriterion, inputText);">
+                        <span class="glyphicon glyphicon-circle-arrow-down"></span> Wyszukaj
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <h4>Wyniki wyszukiwania:</h4>
+                    <select class="form-control" data-ng-model="selectedReservation" ng-options="item.reservationId for item in reservations">
+                        <option value="">-id rezerwacji-</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <br><br>
+                    <a ui-sref="reservationDetails" class="btn btn-block btn-info" ng-disabled="!(!!selectedReservation)" ng-click="saveReservation(selectedReservation);">
+                        <span class="glyphicon glyphicon-circle-arrow-right"></span> Szczegóły
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

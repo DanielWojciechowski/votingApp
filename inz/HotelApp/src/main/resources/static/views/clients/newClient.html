@@ -1,0 +1,76 @@
+<div data-ng-controller="newClientController">
+    <div class="row">
+        <div class="col-sm-offset-4 col-md-4">
+            <h4><b>Rejestracja nowego Klienta {{reservationData.reservationId}}</b></h4>
+        </div>
+    </div>
+    <hr>
+    <div class="col-sm-offset-2">
+        <div class="row">
+            <div class="col-md-5">
+                <h4>Imię:</h4>
+                <input type="text" class="form-control" data-ng-model="clientInput.firstName">
+            </div>
+            <div class="col-md-5">
+                <h4>Nazwisko:</h4>
+                <input type="text" class="form-control" data-ng-model="clientInput.lastName">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h4>E-mail:</h4>
+                <input type="text" class="form-control" data-ng-model="clientInput.email">
+            </div>
+            <div class="col-md-5">
+                <h4>Telefon:</h4>
+                <input type="text" class="form-control" data-ng-model="clientInput.phoneNumber">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h4>Typ dokumentu:</h4>
+                <select class="form-control" data-ng-model="clientInput.selectedIdType" ng-options="item.type for item in clientInput.idTypes">
+                    <option value="">-typ dokumentu-</option>
+                </select>
+            </div>
+            <div class="col-md-5">
+                <h4>Numer dokumentu:</h4>
+                <input type="text" class="form-control" data-ng-model="clientInput.idNumber">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h4>Kraj pochodzenia:</h4>
+                <select class="form-control" data-ng-model="clientInput.selectedCountry" ng-options="item.name for item in clientInput.countries">
+                    <option value="">-typ dokumentu-</option>
+                </select>
+            </div>
+            <div class="col-md-5">
+                <h4>Płeć:</h4>
+                <div class="btn-group">
+                    <label class="btn btn-primary" ng-model="clientInput.sex" btn-radio="true">Mężczyzna</label>
+                    <label class="btn btn-primary" ng-model="clientInput.sex" btn-radio="false">Kobieta</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h4>Preferencje:</h4>
+                <textarea class="form-control" rows="3" style="resize:none" data-ng-model="clientInput.preferences"></textarea>
+            </div>
+            <div class="col-md-5">
+                <h4>PESEL:</h4>
+                <input type="text" class="form-control" data-ng-model="clientInput.pesel">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <a ui-sref="newReservation.selectRoom" class="btn btn-block btn-success" ng-disabled="!(!!clientInput.firstName && !!clientInput.lastName && !!clientInput.email && !!clientInput.selectedIdType && !!clientInput.idNumber && !!clientInput.pesel)" ng-click="saveClient(clientInput);">
+                    <span class="glyphicon glyphicon-circle-arrow-right"></span> Zapisz!
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

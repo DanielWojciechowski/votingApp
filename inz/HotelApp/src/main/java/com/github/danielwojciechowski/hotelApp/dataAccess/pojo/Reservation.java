@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.LinkedList;
 
 /**
  * Created by Daniel on 2014-11-14.
@@ -18,10 +17,21 @@ public class Reservation {
 
     private Date startDate;
     private Date endDate;
+    private String otherInfo;
 
+    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name="clientId")
+    private Client owner;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    @JoinColumn(name="roomId")
-    private LinkedList<Room> rooms;
+    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name="stayPackageId")
+    private StayPackage stayPackage;
 
+    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name="reservationStatusId")
+    private DictReservationStatus reservationStatus;
+
+    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @JoinColumn(name="paymentTypeId")
+    private DictPaymentType paymentType;
 }

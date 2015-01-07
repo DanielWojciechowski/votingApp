@@ -16,9 +16,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 @EnableAutoConfiguration
 @EntityScan("com.github.danielwojciechowski.hotelApp.dataAccess.pojo")
 public class ApplicationStarter {
-
 	public static void main(String[] args) {
 		SpringApplication.run(ApplicationStarter.class, args);
 	}
-
 }

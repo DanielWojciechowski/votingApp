@@ -1,0 +1,40 @@
+<div data-ng-controller='reservationDetailsController'>
+    <div class="row">
+        <div class="col-sm-offset-4 col-md-4">
+            <h4><b>Szczegóły rezerwacji nr {{reservationData.reservationId}}</b></h4>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-offset-2 col-md-4">
+            <h4>Początek rezerwacji: {{reservationData.startDate | date : 'dd.MM.yyyy'}}</h4>
+        </div>
+        <div class="col-md-4">
+            <h4>Koniec rezerwacji: {{reservationData.endDate | date : 'dd.MM.yyyy'}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-md-4">
+            <h4>Imię i nazwisko: {{client.firstName + ' ' +client.lastName}}</h4>
+        </div>
+        <div class="col-md-4">
+            <h4>PESEL: {{client.pesel}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-md-4">
+            <h4>Telefon: {{client.phoneNumber}}</h4>
+        </div>
+        <div class="col-md-4">
+            <h4>Adres e-mail: {{client.email}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-2 col-md-4">
+            <h4>Numer pokoju: {{room.roomNo}}</h4>
+        </div>
+        <div class="col-md-4">
+            <h4>Typ pokoju: {{roomType.roomType}}{{roomsInReservation.bed ? ' z dostawką' : ''}}</h4>
+        </div>
+    </div>
+</div>
