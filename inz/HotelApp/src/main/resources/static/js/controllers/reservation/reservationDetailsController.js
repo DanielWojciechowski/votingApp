@@ -1,7 +1,8 @@
 /**
  * Created by Daniel on 2014-11-02.
  */
-app.controller('reservationDetailsController', function ($scope, $http, $filter, findReservationService, restResourceService) {
+app.controller('reservationDetailsController', function ($scope, $http, $filter, $modal, findReservationService, restResourceService, modalService) {
+    $scope.modalService = modalService;
     $scope.reservationData = findReservationService.getReservation();
     $http.get('/clients/search/findClientByReservationId?id=' + $scope.reservationData.reservationId).
         success(function (data) {
@@ -16,7 +17,8 @@ app.controller('reservationDetailsController', function ($scope, $http, $filter,
             }
         })
         .finally(function () {
-            $http.get('/rooms/search/findRoomByRoomsInReservationId?id=' + restResourceService.getObjectIdFromUrl($scope.roomsInReservation._links.self.href)).
+            $scope.roomsInReservationId = restResourceService.getObjectIdFromUrl($scope.roomsInReservation._links.self.href);
+            $http.get('/rooms/search/findRoomByRoomsInReservationId?id=' + $scope.roomsInReservationId).
                 success(function (data) {
                     if (data != undefined) {
                         $scope.room = data._embedded.rooms[0];
@@ -31,4 +33,26 @@ app.controller('reservationDetailsController', function ($scope, $http, $filter,
                         });
                 });
         });
+    $scope.open = function (size, modalHeader, modalType, hrefs, specificController) {
+        return modalInstance = $modal.open({
+            templateUrl: './views/modals/modal.html',
+            controller: 'modalController',
+            size: size,
+            scope: $scope,
+            resolve: {
+                modalHeader: function () {
+                    return modalHeader;
+                },
+                modalType: function(){
+                    return modalType;
+                },
+                hrefs: function(){
+                    return hrefs;
+                },
+                specificController: function(){
+                    return specificController;
+                }
+            }
+        });
+    }
 });

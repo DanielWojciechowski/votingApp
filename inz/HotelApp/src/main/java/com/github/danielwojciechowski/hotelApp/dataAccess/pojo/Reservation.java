@@ -19,19 +19,19 @@ public class Reservation {
     private Date endDate;
     private String otherInfo;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.LAZY)
     @JoinColumn(name="clientId")
     private Client owner;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.LAZY)
     @JoinColumn(name="stayPackageId")
     private StayPackage stayPackage;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.LAZY)
     @JoinColumn(name="reservationStatusId")
     private DictReservationStatus reservationStatus;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.LAZY)
     @JoinColumn(name="paymentTypeId")
     private DictPaymentType paymentType;
 }

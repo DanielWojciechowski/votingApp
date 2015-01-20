@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6">
         <h4>Data początku rezerwacji:</h4>
         <p class="input-group">
             <input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="startDate" is-open="openedStart"
@@ -10,7 +10,7 @@
               </span>
         </p>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
         <h4>Data końca rezerwacji:</h4>
         <p class="input-group">
             <input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="endDate" is-open="openedEnd"
@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6">
         <h4>Rodzaj pokoju:</h4>
         <select class="form-control" ng-model="selectedRoomType" ng-options="item.roomType for item in roomTypes">
             <option value="">-rodzaj pokoju-</option>
@@ -39,7 +39,7 @@
 </div>
 <br>
 <div class="row">
-    <div class="col-sm-offset-2 col-md-5">
+    <div class="col-md-6">
         <a ui-sref="newReservation.specifyReservation" class="btn btn-block btn-info" ng-disabled="!(!!startDate && !!endDate && !!selectedRoomType)" ng-click="getAvailableRooms(startDate, endDate, selectedRoomType, bedCheckbox)">
             <span class="glyphicon glyphicon-circle-arrow-right"></span> Sprawdź dostępność pokoi
         </a>

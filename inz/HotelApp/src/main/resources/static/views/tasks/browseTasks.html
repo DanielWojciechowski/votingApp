@@ -1,0 +1,26 @@
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-4 col-md-4">
+                <h4><b>Lista zadań</b></h4>
+            </div>
+        </div>
+        <hr>
+        <div ui-grid="gridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-resize-columns class="grid"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-offset-3">
+            <div class="col-md-4">
+                <a ui-sref="home" class="btn btn-block btn-danger">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> Anuluj
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-block btn-success" ng-click="modalService.open('sm','Zmiany zapisano','ok',{ok: 'browseTasks'});">
+                    <span class="glyphicon glyphicon-ok-circle"></span> Zapisz zmiany
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

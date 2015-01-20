@@ -18,5 +18,10 @@ public class Product {
 	@Column(unique=true)
 	private String code;
 
+	private String description;
+
+	@NotNull
+	private boolean isAvailable = false;
+
 	private double price;
 }

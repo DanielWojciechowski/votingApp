@@ -24,9 +24,8 @@ public class Order {
     @NotNull
     private boolean done=false;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    @JoinColumn(name="reservationId")
-    private Reservation reservation;
+    @NotNull
+    private String type;
 
     @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     @JoinColumn(name="roomId")

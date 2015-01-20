@@ -24,7 +24,7 @@ public class RoomsInReservation {
     @JoinColumn(name="reservationId")
     private Reservation reservation;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.LAZY)
     @JoinColumn(name="roomId")
     private Room room;
 

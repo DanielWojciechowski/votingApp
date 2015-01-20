@@ -1,6 +1,7 @@
 package com.github.danielwojciechowski.hotelApp.dataAccess.pojo;
 
 import lombok.Data;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -35,7 +36,8 @@ public class Employee {
     private Date employmentDate;
 
     @NotNull
-    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    @RestResource(exported = false)
+    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name="departmentId")
     private DictDepartment department;
 

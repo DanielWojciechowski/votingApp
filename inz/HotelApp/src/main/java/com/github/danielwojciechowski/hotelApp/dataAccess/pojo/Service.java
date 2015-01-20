@@ -3,6 +3,7 @@ package com.github.danielwojciechowski.hotelApp.dataAccess.pojo;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -15,6 +16,10 @@ public class Service {
 	private String name;
 	@Column(unique=true)
 	private String code;
+	private String description;
+
+	@NotNull
+	private boolean isAvailable = false;
 
 	private double price;
 }

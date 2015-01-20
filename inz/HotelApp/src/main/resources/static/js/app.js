@@ -1,10 +1,11 @@
-var app = angular.module('hotelApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'spring-data-rest']);
+var app = angular.module('hotelApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'ui.grid', 'ui.grid.edit', 'ui.grid.resizeColumns']);
 app.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
         .state('home', {
             url: '/home',
-            templateUrl: './views/home.html'
+            templateUrl: './views/home.html',
+            controller: 'homeController'
         })
         .state('newReservation', {
             url: '/newReservation',
@@ -57,6 +58,31 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('newClient', {
             url: '/newClient',
             templateUrl: './views/clients/newClient.html'
+        })
+        .state('newTask', {
+            url: '/newTask',
+            templateUrl: './views/tasks/newTask.html',
+            controller: 'newTaskController'
+        })
+        .state('browseTasks', {
+            url: '/browseTasks',
+            templateUrl: './views/tasks/browseTasks.html',
+            controller: 'browseTasksController'
+        })
+        .state('newProduct', {
+            url: '/newProduct',
+            templateUrl: './views/products/newProduct.html',
+            controller: 'newProductController'
+        })
+        .state('browseProducts', {
+            url: '/browseProducts',
+            templateUrl: './views/products/browseProducts.html',
+            controller: 'browseProductsController'
+        })
+        .state('findEmployee', {
+            url: '/findEmployee',
+            templateUrl: './views/employee/findEmployee.html',
+            controller: 'findEmployeeController'
         })
         .state('home2', {
             url: '/',
