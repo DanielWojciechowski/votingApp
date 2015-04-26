@@ -36,8 +36,7 @@ public class Employee {
     private Date employmentDate;
 
     @NotNull
-    @RestResource(exported = false)
-    @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @ManyToOne(cascade={CascadeType.ALL}, fetch=FetchType.LAZY)
     @JoinColumn(name="departmentId")
     private DictDepartment department;
 

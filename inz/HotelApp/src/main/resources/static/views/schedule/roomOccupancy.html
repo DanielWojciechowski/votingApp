@@ -1,3 +1,54 @@
-<div>
-    roomOccupancy
+<div class="container">
+    <div class="row">
+        <div class="col-sm-offset-4 col-md-6">
+            <h4><b>Obłożenie pokoju</b></h4>
+        </div>
+    </div>
+    <hr>
+    <div ng-hide="calendarView">
+        <div class="row">
+            <div class="col-sm-offset-3 col-md-6">
+                <h4>Typ pokoju:</h4>
+                <select class="form-control" ng-model="selectedType" ng-options="item.roomType for item in roomTypes"
+                        ng-change="getRooms(selectedType)" >
+                    <option value="">-typ-</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-3 col-md-6">
+                <h4>Numer pokoju:</h4>
+                <select class="form-control" ng-model="selectedRoom" ng-options="item.roomNo for item in rooms">
+                    <option value="">-numer-</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-offset-2 col-md-4">
+                <a ui-sref="home" class="btn btn-block btn-danger">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> Anuluj
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-block btn-success"
+                   ng-disabled="!(!!selectedType && !!selectedRoom)" ng-click="changeView(calendarView, selectedRoom);">
+                    <span class="glyphicon glyphicon-ok-circle"></span> Sprawdź obłożenie
+                </a>
+            </div>
+        </div>
+    </div>
+    <div ng-hide="!calendarView" >
+        <div class="row">
+            <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="reservationEvents"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <a class="btn btn-block btn-danger" ng-click="calendarView=false">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> Powrót
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

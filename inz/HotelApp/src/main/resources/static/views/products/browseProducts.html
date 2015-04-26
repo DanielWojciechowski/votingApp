@@ -1,12 +1,14 @@
 <div>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-offset-4 col-md-4">
-                <h4><b>Lista produktów i usług</b></h4>
-            </div>
-        </div>
-        <hr>
-        <div ui-grid="gridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-resize-columns class="grid"></div>
+        <tabset justified="true" type="pills">
+            <tab select="updateProductFlag(true);" heading="Produkty">
+            </tab>
+            <tab select="updateProductFlag(false);" heading="Usługi">
+            </tab>
+        </tabset>
+        <div ng-show="isProduct" ui-grid="gridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-resize-columns class="grid"></div>
+        <div ng-show="!isProduct" ui-grid="gridOptions2" ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-resize-columns class="grid"></div>
+
     </div>
     <br>
     <div class="row">
@@ -17,7 +19,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a class="btn btn-block btn-success" ng-click="modalService.open('sm','Zmiany zapisano','ok',{ok: 'browseProducts'});">
+                <a class="btn btn-block btn-success" ng-click="modalService.open('sm','Zmiany zapisano!','ok',{ok: 'browseProducts', yes: 'home'});">
                     <span class="glyphicon glyphicon-ok-circle"></span> Zapisz zmiany
                 </a>
             </div>

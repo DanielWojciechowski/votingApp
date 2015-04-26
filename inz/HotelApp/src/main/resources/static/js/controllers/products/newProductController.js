@@ -7,12 +7,12 @@ app.controller('newProductController', function ($scope, $http, modalService) {
     ];
     $scope.isAvailable = false;
 
-    $scope.save = function(type, name, description, price, available){
+    $scope.save = function(type, name, description, price, isAvailable){
         $http.post(type == 'Produkt' ? '/products' : '/services', {
             name: name,
             description: description,
             price: price,
-            isAvailable: available,
+            available: isAvailable,
             type: type.name = "Dział Techniczny" ? "Zlecenie prac technicznych" : "Zlecenie na pokój"
         });
     }

@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-offset-4 col-md-6">
+            <h4><b>Ustalanie stawek za pokoje</b></h4>
+        </div>
+    </div>
+    <hr>
+    <div class="col-sm-offset-2" ng-hide="tableView">
+        <div class="col-sm-offset-2">
+            <div class="row">
+                <div class="col-md-7">
+                    <h4>Typ pokoju:</h4>
+                    <select class="form-control" ng-model="selectedType" ng-options="item.roomType for item in roomTypes"
+                            ng-change="getRooms(selectedType)" >
+                        <option value="">-typ-</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <h4>Numer pokoju:</h4>
+                    <select class="form-control" ng-model="selectedRoom" ng-options="item.roomNo for item in rooms">
+                        <option value="">-numer-</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h4>Data od:</h4>
+                <p class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}"
+                           min-date="today" max-date="endDate"
+                           data-ng-model="startDate" is-open="openedStart"
+                           data-ng-required="true" close-text={{closeText}}
+                           clear-text={{clearText}} current-text={{currentText}}/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" data-ng-click="openDatePickerStart($event)"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-5">
+                <h4>Data do:</h4>
+                <p class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}"
+                           min-date="!!startDate ? startDate : today"
+                           data-ng-model="endDate" is-open="openedEnd"
+                           data-ng-required="true" close-text={{closeText}}
+                           clear-text={{clearText}} current-text={{currentText}}/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" data-ng-click="openDatePickerEnd($event)"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <a ui-sref="home" class="btn btn-block btn-danger">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> Anuluj
+                </a>
+            </div>
+            <div class="col-md-5">
+                <a class="btn btn-block btn-success"
+                   ng-disabled="!(!!selectedType && !!selectedRoom && !!startDate && !!endDate)" ng-click="changeView(tableView, selectedRoom, startDate, endDate);">
+                    <span class="glyphicon glyphicon-ok-circle"></span> Pokaż cennik
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div ng-hide="!tableView">
+        <div class="row">
+            <div class="col-sm-offset-4 col-md-6">
+                <h4><b>Stawki dla pokoju nr {{roomNo}}</b></h4>
+            </div>
+        </div>
+        <div ui-grid="gridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-resize-columns class="grid"></div>
+        <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Data:</h4>
+                    <p class="input-group">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}"
+                               min-date="today"
+                               data-ng-model="newDate" is-open="openedNewDate"
+                               data-ng-required="true" close-text={{closeText}}
+                               clear-text={{clearText}} current-text={{currentText}}/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" data-ng-click="openDatePickernewDate($event)"><i
+                                    class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Stawka:</h4>
+                    <input type="text" class="form-control" data-ng-model="newRoomRate">
+                </div>
+                <div class="col-md-4">
+                    <br><br>
+                    <a ng-disabled="!(!!newDate && !!newRoomRate)" class="btn btn-block btn-info" data-ng-click="addNew(newDate, newRoomRate, startDate, endDate);">
+                        <span class="glyphicon glyphicon-circle-arrow-up"></span> Dodaj stawkę
+                    </a>
+                </div>
+            </div>
+        <br>
+        <div class="row col-sm-offset-1">
+            <div class="col-md-5">
+                <a class="btn btn-block btn-danger" ng-click="tableView=false">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> Powrót
+                </a>
+            </div>
+            <div class="col-md-5">
+                <a class="btn btn-block btn-success" ng-click="modalService.open('sm','Zmiany zapisano!','ok',{ok: 'setRoomRate', yes:'home'});">
+                    <span class="glyphicon glyphicon-ok-circle"></span> Zapisz
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-var app = angular.module('hotelApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'ui.grid', 'ui.grid.edit', 'ui.grid.resizeColumns']);
+var app = angular.module('hotelApp', ['ui.router', 'ngResource', 'ui.bootstrap', 'ui.grid', 'ui.grid.edit', 'ui.grid.resizeColumns', 'ui.calendar']);
 app.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
@@ -49,7 +49,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('roomOccupancy', {
             url: '/roomOccupancy',
-            templateUrl: './views/schedule/roomOccupancy.html'
+            templateUrl: './views/schedule/roomOccupancy.html',
+            controller: 'roomOccupancyController'
         })
         .state('findAvailableRoom', {
             url: '/findAvailableRoom',
@@ -79,10 +80,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: './views/products/browseProducts.html',
             controller: 'browseProductsController'
         })
+        .state('setRoomRate', {
+            url: '/setRoomRate',
+            templateUrl: './views/products/setRoomRate.html',
+            controller: 'setRoomRateController'
+        })
         .state('findEmployee', {
             url: '/findEmployee',
             templateUrl: './views/employee/findEmployee.html',
             controller: 'findEmployeeController'
+        })
+        .state('newEmployee', {
+            url: '/newEmployee',
+            templateUrl: './views/employee/newEmployee.html',
+            controller: 'newEmployeeController'
         })
         .state('home2', {
             url: '/',

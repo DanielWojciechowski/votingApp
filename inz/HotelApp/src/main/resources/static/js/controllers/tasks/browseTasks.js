@@ -25,11 +25,13 @@ app.controller('browseTasksController', function ($scope, $http, modalService, $
         enableSorting: true,
         enableFiltering: true,
         columnDefs: [
-            { name:  'Id', field: 'id', enableCellEdit: false, width: '5%'},
+            { name:  'Id', field: 'id', enableCellEdit: false, width: '5%', sort: {
+                direction: uiGridConstants.ASC,
+                priority: 1
+            }},
             { name: 'Temat', field: 'name'},
             { name: 'Opis', field: 'description'},
-            { name: 'Czy wykonane', field: 'done',
-                cellTemplate: '<div class="ngCellText">{{row.getProperty(col.field) | true_false}}</div>'},
+            { name: 'Czy wykonane', field: 'done'},
             { name: 'Typ zadania', field: 'type', enableCellEdit: false}
 
         ],

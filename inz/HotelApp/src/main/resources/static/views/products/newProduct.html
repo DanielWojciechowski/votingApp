@@ -52,7 +52,7 @@
             </div>
             <div class="col-sm-offset-1 col-md-4">
                 <a class="btn btn-block btn-success"
-                   ng-disabled="!(!!product.selectedType && !!product.name && !!product.price)" ng-click="save(product.selectedType, product.name, product.description, product.price, product.isAvailable);modalService.open('sm','Dodano do oferty','ok',{ok: 'home'});">
+                   ng-disabled="!(!!product.selectedType && !!product.name && !!product.price)" ng-click="save(product.selectedType, product.name, product.description, product.price, isAvailable);modalService.open('sm','Dodano do oferty!','ok',{ok: 'home', yes: 'home'});">
                     <span class="glyphicon glyphicon-ok-circle"></span> Zapisz
                 </a>
             </div>

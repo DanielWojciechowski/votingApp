@@ -1,0 +1,6 @@
+/target/
+/out.txt
+*.iml
+*.classpath
+*.project
+

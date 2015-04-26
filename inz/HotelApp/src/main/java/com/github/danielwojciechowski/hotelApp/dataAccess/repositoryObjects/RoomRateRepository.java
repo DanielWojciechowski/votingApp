@@ -17,6 +17,9 @@ public interface RoomRateRepository extends CrudRepository<RoomRate, Long>{
 	Double getReservationCost(@Param("roomNo") String roomNo,
 									   @Param("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
 									   @Param("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate);
+	List<RoomRate> findRoomRateByRoomIdAndDateBetween(@Param("roomId") Long id,
+										@Param("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+										@Param("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate);
 
 	public final static String GET_STAY_VALUE = "select sum(rr.price) from RoomRate rr " +
 			"LEFT JOIN rr.room r " +

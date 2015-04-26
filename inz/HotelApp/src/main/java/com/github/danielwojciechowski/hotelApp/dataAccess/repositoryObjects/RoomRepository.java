@@ -22,15 +22,15 @@ public interface RoomRepository extends CrudRepository<Room, Long>{
 	@Query(FIND_ROOM_BY_ROOMSINRESERVATION_ID)
 	List<Room> findRoomByRoomsInReservationId(@Param("id") Long id);
 
+	List<Room> findRoomByRoomTypeId(@Param("roomTypeId") Long id);
+
 	public final static String FIND_NOT_RESERVED_ROOMS = "select distinct r from RoomsInReservation rir " +
 			"LEFT JOIN rir.room r " +
 			"LEFT JOIN r.roomType rt " +
 			"LEFT JOIN rir.reservation res " +
 			"where rt.roomType = :roomType " +
-			"and (res.startDate is null " +
-			"or res.startDate not between :startDate and :endDate) " +
-			"and (res.endDate is null " +
-			"or res.endDate not between :startDate and :endDate) ";
+			"and :startDate between res.startDate and res.endDate " +
+			"and  :endDate between res.startDate and res.endDate  ";
 
 	public final static String FIND_ROOM_BY_ROOMSINRESERVATION_ID = "select distinct r from RoomsInReservation rir " +
 			"LEFT JOIN rir.room r " +

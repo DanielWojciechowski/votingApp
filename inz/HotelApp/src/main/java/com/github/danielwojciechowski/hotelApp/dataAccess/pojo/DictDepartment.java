@@ -13,6 +13,5 @@ public class DictDepartment {
 	private Long id;
 
 	@Column(unique=true)
-	@NotNull
 	private String name;
 }

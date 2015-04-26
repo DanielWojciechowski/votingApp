@@ -14,7 +14,14 @@ public interface DictDepartmentRepository extends CrudRepository<DictDepartment,
 	@Query(FIND_DEPARTMENTS_FOR_ORDER)
 	List<DictDepartment> findDepartmentsForOrder();
 
+	@Query(FIND_EMPLOYEE_DEPARTMENT)
+	List<DictDepartment> findEmployeeDepartment(@Param("id") Long id);
+
 
 	public final static String FIND_DEPARTMENTS_FOR_ORDER = "select distinct d from DictDepartment d " +
 			"where d.name = 'Dział Techniczny' or d.name = 'Obsługa Pokojowa'";
+
+	public final static String FIND_EMPLOYEE_DEPARTMENT = "select distinct d from Employee e " +
+			"LEFT JOIN e.department d "+
+			"where e.id = :id";
 }

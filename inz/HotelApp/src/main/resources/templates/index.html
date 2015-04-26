@@ -4,8 +4,11 @@
     <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<title>***Hotel Wzorcowy***</title>
+    <script type="text/javascript" src="./js/libs/jquery.js"></script>
+    <script type="text/javascript" src="./js/libs/moment.min.js"></script>
     <link href="./css/bootstrap.css" rel="stylesheet" />
     <link href="./css/ui-grid-unstable.css" rel="stylesheet" />
+    <link href="./css/fullcalendar.css" rel="stylesheet" />
     <link href="./css/specificStyle.css" rel="stylesheet" />
     <link rel="shortcut icon" href="./images/icon.ico" />
 
@@ -41,16 +44,18 @@
                                 <li><a ui-sref="browseTasks">Przeglądaj zlecenia</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/newProduct') || isActive('/browseProducts')}">
+                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/newProduct') || isActive('/browseProducts') || isActive('/setRoomRate')}">
                             <a href="#" class="dropdown-toggle" dropdown-toggle>Produkty<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a ui-sref="newProduct">Nowy produkt</a></li>
                                 <li><a ui-sref="browseProducts">Przeglądaj produkty</a></li>
+                                <li><a ui-sref="setRoomRate">Stawki za pokoje</a></li>
                             </ul>
                         </li>
                         <li class="dropdown" dropdown data-ng-class="{'active':isActive('/newEmployee') || isActive('/findEmployee')}">
                             <a href="#" class="dropdown-toggle" dropdown-toggle>Pracownicy<b class="caret"></b></a>
                             <ul class="dropdown-menu">
+                                <li><a ui-sref="newEmployee">Nowy pracownik</a></li>
                                 <li><a ui-sref="findEmployee">Rejestr pracowników</a></li>
                             </ul>
                         </li>
@@ -81,19 +86,26 @@
     </div>
 
     <!-- 3rd party libraries -->
+
     <script type="text/javascript" src="./js/libs/angular.js"></script>
     <script type="text/javascript" src="./js/libs/angular-animate.js"></script>
     <script type="text/javascript" src="./js/libs/angular-route.js"></script>
     <script type="text/javascript" src="./js/libs/angular-resource.js"></script>
-
     <script type="text/javascript" src="./js/libs/ui-bootstrap-0.12.0.js"></script>
     <script type="text/javascript" src="./js/libs/angular-ui-router.js"></script>
     <script type="text/javascript" src="./js/libs/ui-grid-unstable.js"></script>
+
+    <script type="text/javascript" src="./js/libs/fullcalendar.js"></script>
+
+    <script type="text/javascript" src="./js/libs/jquery-ui.custom.min.js"></script>
+
+    <script type="text/javascript" src="./js/libs/calendar.js"></script>
     <!-- Load app main script -->
 	<script type="text/javascript" src="./js/app.js"></script>
     <!-- Load app locale_pl script -->
     <script type="text/javascript" src="./js/libs/locale_pl.js"></script>
     <script type="text/javascript" src="./js/libs/pl.js"></script>
+    <script type="text/javascript" src="./js/libs/lang-all.js"></script>
     <!-- Load services -->
     <script type="text/javascript" src="./js/services/newReservationService.js"></script>
     <script type="text/javascript" src="./js/services/findReservationService.js"></script>
@@ -111,8 +123,11 @@
     <script type="text/javascript" src="./js/controllers/tasks/browseTasks.js"></script>
     <script type="text/javascript" src="./js/controllers/products/newProductController.js"></script>
     <script type="text/javascript" src="./js/controllers/products/browseProducts.js"></script>
+    <script type="text/javascript" src="./js/controllers/products/setRoomRateController.js"></script>
     <script type="text/javascript" src="./js/controllers/employee/findEmployeeController.js"></script>
+    <script type="text/javascript" src="./js/controllers/employee/newEmployeeController.js"></script>
     <script type="text/javascript" src="./js/controllers/modals/modalController.js"></script>
+    <script type="text/javascript" src="./js/controllers/schedule/roomOccupancyController.js"></script>
     <!-- Load custom filters -->
     <!-- Load custom directives -->
 

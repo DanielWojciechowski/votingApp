@@ -7,9 +7,6 @@ app.controller('newReservationController', function ($scope, $http, $filter, new
     $scope.minDateStart = new Date();
     $scope.minDateEnd = new Date();
 
-    $scope.openedStart = false;
-    $scope.openedEnd = false;
-
     $scope.openStart = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
@@ -20,7 +17,6 @@ app.controller('newReservationController', function ($scope, $http, $filter, new
         $event.preventDefault();
         $event.stopPropagation();
         $scope.openedEnd = !$scope.openedEnd;
-
     };
 
     $scope.clearText = 'Wyczyść';
