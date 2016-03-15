@@ -18,3 +18,17 @@ hr {
     width: 990px;
     height: 390px;
 }
+
+.progress {
+    height: 2em;
+}
+
+.panel-body{
+    background-color: #ecf0f1;
+}
+
+.progress{
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: 4px;
+}

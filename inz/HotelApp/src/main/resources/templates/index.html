@@ -3,7 +3,7 @@
 <head>
     <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title>***Hotel Wzorcowy***</title>
+	<title>***VotingApp***</title>
     <script type="text/javascript" src="./js/libs/jquery.js"></script>
     <script type="text/javascript" src="./js/libs/moment.min.js"></script>
     <link href="./css/bootstrap.css" rel="stylesheet" />
@@ -18,51 +18,13 @@
         <header class="container" data-ng-controller="navigationController">
             <div id="menu" class="navbar navbar-inverse">
                 <div class="navbar-header">
-                    <a class="navbar-brand" ui-sref="home">***Hotel Wzorcowy***</a>
+                    <a class="navbar-brand" ui-sref="home">***VotingApp***</a>
                 </div>
-                <div class="navbar-collapse collapse navbar-inverse-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/newReservation') || isActive('/findReservation')}">
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>Rezerwacje<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a ui-sref="newReservation.selectClient">Nowa rezerwacja</a></li>
-                                <li><a ui-sref="findReservation">Znajdź rezerwację</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/hotelOccupancy') || isActive('/roomOccupancy') || isActive('/findAvailableRoom')}">
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>Grafik<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a ui-sref="hotelOccupancy">Obłożenie hotelu</a></li>
-                                <li><a ui-sref="roomOccupancy">Obłożenie pokoju</a></li>
-                                <li><a ui-sref="findAvailableRoom">Znajdź wolny pokój</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/newTask') || isActive('/browseTasks')}">
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>Zlecenia<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a ui-sref="newTask">Nowe zlecenie</a></li>
-                                <li><a ui-sref="browseTasks">Przeglądaj zlecenia</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/newProduct') || isActive('/browseProducts') || isActive('/setRoomRate')}">
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>Produkty<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a ui-sref="newProduct">Nowy produkt</a></li>
-                                <li><a ui-sref="browseProducts">Przeglądaj produkty</a></li>
-                                <li><a ui-sref="setRoomRate">Stawki za pokoje</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown" dropdown data-ng-class="{'active':isActive('/newEmployee') || isActive('/findEmployee')}">
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>Pracownicy<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a ui-sref="newEmployee">Nowy pracownik</a></li>
-                                <li><a ui-sref="findEmployee">Rejestr pracowników</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
-                    </ul>
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="new">Nowa ankieta</a>
+                </div>
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="results">Wyniki</a>
                 </div>
             </div>
         </header>
@@ -77,8 +39,9 @@
                 <h6>
                     Wersja: {{version}}<br/>
                     <div class="text-center">
-                        Aplikacja utworzona przez Daniela Wojciechowskiego w ramach pracy inżynierskiej pod kierownictwem dr inż. Ireny Skórskiej.<br />
-                        Wojskowa Akademia Techniczna, 2014-2015 r.
+                        VotingApp<br />
+                        Autorzy: Daniel Wojciechowski, Anna Cierniewska<br />
+                        Wojskowa Akademia Techniczna, 2016 r.
                     </div>
                 </h6>
             </div>
@@ -107,29 +70,20 @@
     <script type="text/javascript" src="./js/libs/pl.js"></script>
     <script type="text/javascript" src="./js/libs/lang-all.js"></script>
     <!-- Load services -->
-    <script type="text/javascript" src="./js/services/newReservationService.js"></script>
-    <script type="text/javascript" src="./js/services/findReservationService.js"></script>
-    <script type="text/javascript" src="./js/services/restResourceService.js"></script>
-    <script type="text/javascript" src="./js/services/modalService.js"></script>
+
     <!-- Load controllers -->
-    <script type="text/javascript" src="./js/controllers/homeController.js"></script>
-    <script type="text/javascript" src="./js/controllers/navigationController.js"></script>
     <script type="text/javascript" src="./js/controllers/appVersionController.js"></script>
-    <script type="text/javascript" src="./js/controllers/reservation/newReservationController.js"></script>
-    <script type="text/javascript" src="./js/controllers/reservation/findReservationController.js"></script>
-    <script type="text/javascript" src="./js/controllers/reservation/reservationDetailsController.js"></script>
-    <script type="text/javascript" src="./js/controllers/clients/newClientController.js"></script>
-    <script type="text/javascript" src="./js/controllers/tasks/newTask.js"></script>
-    <script type="text/javascript" src="./js/controllers/tasks/browseTasks.js"></script>
-    <script type="text/javascript" src="./js/controllers/products/newProductController.js"></script>
-    <script type="text/javascript" src="./js/controllers/products/browseProducts.js"></script>
-    <script type="text/javascript" src="./js/controllers/products/setRoomRateController.js"></script>
-    <script type="text/javascript" src="./js/controllers/employee/findEmployeeController.js"></script>
-    <script type="text/javascript" src="./js/controllers/employee/newEmployeeController.js"></script>
+    <script type="text/javascript" src="./js/controllers/navigationController.js"></script>
+
+    <script type="text/javascript" src="./js/controllers/homeController.js"></script>
+    <script type="text/javascript" src="./js/controllers/resultsController.js"></script>
+    <script type="text/javascript" src="./js/controllers/newController.js"></script>
+
     <script type="text/javascript" src="./js/controllers/modals/modalController.js"></script>
-    <script type="text/javascript" src="./js/controllers/schedule/roomOccupancyController.js"></script>
+
     <!-- Load custom filters -->
     <!-- Load custom directives -->
+    <script type="text/javascript" src="./js/directives/datePickerDirective.js"></script>
 
 </body>
 </html>

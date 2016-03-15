@@ -1,0 +1,63 @@
+<div data-ng-controller="newController">
+    <div class="row">
+        <div class="col-sm-offset-4 col-md-4">
+            <h3><b>Tworzenie nowej ankiety </b></h3>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-block btn-success"
+               ng-disabled="!(!!survey.question && !!survey.answers && survey.answers.length > 0)"
+               ng-click="saveSurvey();">
+                <span class="glyphicon glyphicon-ok-circle"></span> Wyślij ankietę
+            </a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-5">
+            <h4>Pytanie:</h4>
+            <input type="text" class="form-control" data-ng-model="survey.question">
+        </div>
+        <div class="col-md-4">
+            <div class="btn-group" >
+                <h4>Zakończenie ankiety:</h4>
+                <button data-ng-repeat="value in radioModelButtons" class="btn btn-info" type="button" data-ng-model="radio.model" btn-radio="value">{{value}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <h4>Odpowiedzi:</h4>
+            <input type="text" class="form-control" data-ng-model="newAnswer" data-ng-keyup="$event.keyCode == 13 && addAnswer()" />
+            <div ng-repeat="answer in survey.answers">
+                <div class="row">
+                    <div class="col-md-1">
+                        <button class="btn btn-danger btn-xs" ng-click="deleteAnswer($index)" style="margin-top: 10px;"><i class="glyphicon glyphicon-remove-circle"></i></button>
+                    </div>
+                    <div class="col-md-11" style="padding-left: 10px;">
+                        <h4>{{answer}}</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4" data-ng-hide="radio.model == radioModelButtons[0]">
+            <h4>Data zakończenia:</h4>
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd.MM.yyyy" min-date="minDateStart"
+                       data-ng-model="survey.endDate" is-open="openedEnd"
+                       data-ng-required="true" close-text="Zamknij"
+                       clear-text="Wyczyść" current-text="Dziś">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" data-ng-click="openDatePicker($event)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <div class="col-md-3" data-ng-hide="radio.model == radioModelButtons[0]">
+            <timepicker ng-model="endTime" hour-step="1" minute-step="1" show-meridian="false"></timepicker>
+        </div>
+
+    </div>
+</div>
+
